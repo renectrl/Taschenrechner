@@ -1,0 +1,86 @@
+using System;
+
+namespace Taschenrechner
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Titel anzeigen
+            Console.WriteLine("===================");
+            Console.WriteLine("  TASCHENRECHNER");
+            Console.WriteLine("===================");
+            Console.WriteLine();
+
+            // Endlosschleife - Programm läuft bis Benutzer abbricht
+            while (true)
+            {
+                // Erste Zahl eingeben
+                Console.Write("Erste Zahl: ");
+                double zahl1 = Convert.ToDouble(Console.ReadLine());
+
+                // Rechenart auswählen
+                Console.Write("Rechenart (+, -, *, /): ");
+                string rechenart = Console.ReadLine();
+
+                // Zweite Zahl eingeben
+                Console.Write("Zweite Zahl: ");
+                double zahl2 = Convert.ToDouble(Console.ReadLine());
+
+                // Variable für das Ergebnis
+                double ergebnis = 0;
+
+                // Berechnung durchführen
+                if (rechenart == "+")
+                {
+                    ergebnis = zahl1 + zahl2;
+                }
+                else if (rechenart == "-")
+                {
+                    ergebnis = zahl1 - zahl2;
+                }
+                else if (rechenart == "*")
+                {
+                    ergebnis = zahl1 * zahl2;
+                }
+                else if (rechenart == "/")
+                {
+                    if (zahl2 != 0)
+                    {
+                        ergebnis = zahl1 / zahl2;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Fehler! Division durch 0 nicht möglich!");
+                        Console.WriteLine();
+                        continue; // Zurück zum Anfang
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Ungültige Rechenart!");
+                    Console.WriteLine();
+                    continue; // Zurück zum Anfang
+                }
+
+                // Ergebnis anzeigen
+                Console.WriteLine("Ergebnis: " + ergebnis);
+                Console.WriteLine();
+
+                // Fragen ob weiterrechnen
+                Console.Write("Noch eine Rechnung? (j/n): ");
+                string antwort = Console.ReadLine();
+                
+                if (antwort == "n" || antwort == "N")
+                {
+                    break; // Programm beenden
+                }
+                
+                Console.WriteLine();
+            }
+
+            // Abschiedsnachricht
+            Console.WriteLine("Auf Wiedersehen!");
+        }
+    }
+}
